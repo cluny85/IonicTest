@@ -1,4 +1,17 @@
 ########
+NODE  ##
+########
+Cargando el proyecto:
+npm install
+grunt jade  (Previo haber instalado grunt cli)
+
+Arrancando node:
+node server
+localhost:3000
+
+
+
+########
 IONIC ##
 ########
 
