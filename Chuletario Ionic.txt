@@ -59,3 +59,8 @@ $ gulp
 The default task will run and do nothing.
 
 To run individual tasks, use gulp <task> <othertask>
+
+ANGULAR
+
+Herencia:
+angular.extend(this, $controller('PageCtrl', {$scope: $scope}));
