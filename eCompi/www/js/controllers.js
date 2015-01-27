@@ -1,5 +1,24 @@
 angular.module('starter.controllers', [])
 
+.controller('IntroCtrl', function($scope, $state, $ionicSlideBoxDelegate, AppState) {
+ 
+  // Called to navigate to the main app
+  $scope.startApp = function() {
+    $state.go('tab.main');
+  };
+  $scope.next = function() {
+    $ionicSlideBoxDelegate.next();
+  };
+  $scope.previous = function() {
+    $ionicSlideBoxDelegate.previous();
+  };
+
+  // Called each time the slide changes
+  $scope.slideChanged = function(index) {
+    $scope.slideIndex = index;
+  };
+})
+
 .controller('MainCtrl', function($scope, $state, $cordovaBarcodeScanner, Pushes) {
   $scope.pushes = Pushes.all();
   $scope.remove = function(push) {

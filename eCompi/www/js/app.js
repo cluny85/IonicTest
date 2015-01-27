@@ -29,6 +29,13 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.directives', 'starter.
   // Each state's controller can be found in controllers.js
   $stateProvider
 
+  // Presentación de la app explicando como funciona
+  .state('intro', {
+    url: '/',
+    templateUrl: 'templates/intro.html',
+    controller: 'IntroCtrl'
+  })
+  
   // setup an abstract state for the tabs directive
     .state('tab', {
     url: "/tab",
@@ -107,5 +114,5 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.directives', 'starter.
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/main');
-
+  //$urlRouterProvider.otherwise('/intro');
 });

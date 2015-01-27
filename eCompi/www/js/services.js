@@ -1,5 +1,19 @@
 angular.module('starter.services', [])
 
+.factory('AppState', function() {
+  // Might use a resource here that returns a JSON array
+  
+  // Some fake testing data
+  var state = {
+    first_time: true
+  };
+
+  return {
+    isFirstTime: function(){
+      return state.first_time;
+    }    
+  }
+})
 .factory('Mensajes', function() {
   // Might use a resource here that returns a JSON array
   
