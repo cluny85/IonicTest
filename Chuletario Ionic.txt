@@ -64,3 +64,14 @@ ANGULAR
 
 Herencia:
 angular.extend(this, $controller('PageCtrl', {$scope: $scope}));
+
+##########
+MONGO DB #
+##########
+Declarar donde se va a encontrar la bbdd fisicamente:
+	mongod.exe --dbpath ruta
+Entrar en la consola de mongodb:
+	/MongoDB/bin/mongo.exe
+
+* Usuarios:
+http://docs.mongodb.org/manual/tutorial/add-user-administrator/
