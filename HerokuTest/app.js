@@ -16,11 +16,49 @@ mongoose.connect('mongodb://localhost/ecompi', function(err, res) {
 var models = require('./persistence/ecompi')(app, mongoose);
 
 
-
+// servicios
 var router = express.Router();
 
 router.get('/', function(req, res) {
-   res.send("Hello World!");
+   res.send("visit https://github.com/cluny85");
+});
+
+router.post('/services/login', function(req, res) {
+	var response={
+		result: '',
+		data: {},
+		msg: ''
+	};
+    if (req.body.login!==null &&
+		req.body.login!==undefined &&
+		req.body.password!==null &&
+		req.body.password!==undefined ){
+
+   		var user = {
+	        login: req.body.login || '',
+	        password: String(req.body.password) || ''
+	    };
+	    var usuario = models.getLogin(login,password);
+	    if (usuario) {
+			response.result="OK";
+			response.data=usuario;
+			res.send(response);
+	    }
+	    else {
+	    	response.result="KO";
+	    	response.msg="Something fail.";
+	    	res.send(response);
+	    }
+    }
+    //res.send("visit https://github.com/cluny85");
+});
+router.post('/services/register', function(req, res) {
+   
+   //res.send("visit https://github.com/cluny85");
+});
+router.post('/services/sendpush', function(req, res) {
+   
+   //res.send("visit https://github.com/cluny85");
 });
 
 app.use(router);

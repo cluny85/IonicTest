@@ -18,15 +18,18 @@ exports.getPushCode = function(id) {
 };
 
 // Return PushCode in the DB
-exports.getLogin = function(mail) {
+exports.getLogin = function(mail,pass) {
     var result=null;
 
     BBDD.findOne(
-    	{email: mail},
-    	'email password user_id', 
+    	{
+    		email: mail,
+    		password: pass
+    	},
+    	'push_code', 
     	function (err, person) {
 		  if (err) return handleError(err);
-		  console.log('%s email and %s password and %s user_id.', person.email, person.password, person.user_id);
+		  console.log('%s push_code.', person.push_code);
 		  result=person;		  
 		}
 	);
@@ -37,7 +40,6 @@ exports.addUser = function(user) {
     var result=null;
 
     var pushSchema = new BBDD({
-	  user_id:  user.user_id,
 	  push_code: user.push_code,
 	  email: user.email,
 	  password: user.password,
