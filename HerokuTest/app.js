@@ -13,8 +13,8 @@ mongoose.connect('mongodb://localhost/ecompi', function(err, res) {
     if(err) throw err;
     console.log('Connected to Database');
 });
-var models = require('./persistence/ecompi')(app, mongoose);
-
+var models = require('./persistence/ecompi');//(app, mongoose);
+var eCompiCtrl = require('./persistence/persistence');
 
 // servicios
 var router = express.Router();
@@ -38,7 +38,8 @@ router.post('/services/login', function(req, res) {
 	        login: req.body.login || '',
 	        password: String(req.body.password) || ''
 	    };
-	    var usuario = models.getLogin(login,password);
+	    var usuario = eCompiCtrl.getLogin(user.login,user.password);
+	    console.log("-- Usuario autenticado: "+usuario);
 	    if (usuario) {
 			response.result="OK";
 			response.data=usuario;
@@ -52,8 +53,24 @@ router.post('/services/login', function(req, res) {
     }
     //res.send("visit https://github.com/cluny85");
 });
-router.post('/services/register', function(req, res) {
-   
+router.post('/services/signup', function(req, res) {
+	console.log("## Received service singup...");
+	if (req.body) {
+		eCompiCtrl.signup(req,res);
+	} else{
+		res.send("Bad way");
+	}
+
+
+	var us = req.body;
+	if (us && us.email && us.password) {
+		console.log("# Received new user: "+us.email);
+		us.push_code = "123456789";
+		us.bidi_code = "";
+		var result = eCompiCtrl.addUser(us);
+
+		console.log("-- Usuario registrado: "+result);
+	}
    //res.send("visit https://github.com/cluny85");
 });
 router.post('/services/sendpush', function(req, res) {

@@ -8,10 +8,12 @@ Persistence.prototype.addPerson = function(correo,password) {
     //generar con el id del usuario y un timestamp del momento del registro
     
     encoder.on('end', function(png_data){
+    	console.log("pgn: "+png_data);
 	    // png_data is an instance of Buffer
 	    // do something
 	});
-	encoder.encode('some value');
+	console.log("pgn pre encode...");
+	encoder.encode('asdasdasdasdasdasdasdasd');
   }
 };
 

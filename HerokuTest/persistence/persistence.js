@@ -45,7 +45,7 @@ exports.addUser = function(user) {
 	  password: user.password,
 	  bidi_code:  user.bidi_code
 	});
-
+    console.log("-- Adding new user: "+pushSchema.email);
     pushSchema.save(function(err) {
         if(err){
         	result={
@@ -55,6 +55,34 @@ exports.addUser = function(user) {
         }
         else result = {code: 'OK',message: "New user inserted"};
     });
-
+    console.log("-- Result new user: "+JSON.stringify(result));
 	return result;
+};
+
+exports.signup = function(req,res) {
+    var result=null;
+
+    var pushSchema = new BBDD({
+      push_code: user.push_code,
+      email: user.email,
+      password: user.password,
+      bidi_code:  user.bidi_code
+    });
+    console.log("-- Adding new user: "+pushSchema.email);
+    pushSchema.save(function(err) {
+        if(err){
+            result={
+                code: 'KO',
+                message: err.message
+            };
+            res.send(result);
+        }
+        else{
+            res.contentType('application/json');
+            result = {code: 'OK',message: "New user inserted"};
+            res.send(JSON.stringify(result));
+        }
+    });
+    console.log("-- Result new user: "+JSON.stringify(result));
+    return result;
 };
