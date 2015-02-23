@@ -61,7 +61,6 @@ router.post('/services/signup', function(req, res) {
 		res.send("Bad way");
 	}
 
-
 	var us = req.body;
 	if (us && us.email && us.password) {
 		console.log("# Received new user: "+us.email);
@@ -77,6 +76,7 @@ router.post('/services/sendpush', function(req, res) {
    
    //res.send("visit https://github.com/cluny85");
 });
+/* servicios prueba */
 
 app.use(router);
 
